@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static fb_versions %}
+
+
+{% block content %}
+
+<h2>Blog Posts</h2>
+
+{% for blogpost in blogpost_list %}
+<div class="blogpost">
+    <h4>{{ blogpost.title }}</h4>
+    <img src="{% version blogpost.image 'small' %}">
+    {{ blogpost.content|safe }}
+</div>
+{% endfor %}
+
+{% endblock %}
