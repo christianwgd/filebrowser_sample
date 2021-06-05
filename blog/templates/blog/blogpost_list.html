@@ -9,9 +9,15 @@
 {% for blogpost in blogpost_list %}
 <div class="blogpost">
     <h4>{{ blogpost.title }}</h4>
-    <img src="{% version blogpost.image 'small' %}">
+    <img src="{% version blogpost.image 'small_webp' %}" alt="{{ blogpost.title }}">
+    <h5>WebP: {% version blogpost.image 'small_webp' %}</h5>
+    <picture>
+        <source type="image/webp" srcset="{% version blogpost.image 'small_webp' %}" alt="{{ blogpost.title }}">
+        <source srcset="{% version blogpost.image 'small' %}" alt="{{ blogpost.title }}">
+        <img src="{% version blogpost.image 'small' %}" alt="{{ blogpost.title }}">
+    </picture>
     {{ blogpost.content|safe }}
 </div>
 {% endfor %}
 
-{% endblock %}
+{% endblock %}f

@@ -107,14 +107,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = 'de'
+TIME_ZONE = 'Europe/Berlin'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -126,22 +122,23 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ####################
 # TINYMCE SETTINGS #
 ####################
+TINYMCE_SPELLCHECKER = False
+TINYMCE_COMPRESSOR = False
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': 'table,paste,spellchecker,searchreplace,'
-                'image,media,link,anchor,code,fullscreen,lists,'
-                'contextmenu,hr,paste,searchreplace,textcolor',
-    'toolbar1': 'undo redo | styleselect | forecolor backcolor bold italic | '
-                'alignleft aligncenter alignright alignjustify | '
-                'bullist numlist outdent indent | link unlink image | code spellchecker',
+    'plugins': 'table lists paste searchreplace image media link anchor,'
+               'code fullscreen hr paste searchreplace autolink wordcount',
+    'menubar': 'file edit view insert format table tools help',
+    'toolbar': 'undo redo | formatselect| bold italic underline | '
+               'alignleft aligncenter alignright alignjustify | '
+               'bullist numlist outdent indent | link unlink image media | code',
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
-    'spellchecker_language': 'de_DE',
-    'browser_spellcheck' : True,
+    'browser_spellcheck': True,
     'width': 'auto',
     'height': 400,
     'image_advtab': True,
@@ -155,14 +152,14 @@ TINYMCE_DEFAULT_CONFIG = {
         {'title': 'None', 'value': ''},
         {'title': 'Bild vergrösserbar', 'value': 'blogthumb'}
     ],
-    'menu': {
-        'edit': {'title': 'Edit', 'items': 'undo redo | cut copy paste pastetext | selectall | searchreplace'},
-        'insert': {'title': 'Insert', 'items': 'image link media anchor | hr'},
-        'view': {'title': 'View', 'items': 'code fullscreen'},
-        'format': {'title': 'Format', 'items': 'bold italic underline strikethrough superscript subscript | removeformat'},
-        'table': {'title': 'Table', 'items': 'inserttable tableprops deletetable | cell row column'},
-        'tools': {'title': 'Tools', 'items': 'spellchecker'}
-    },
 }
-TINYMCE_SPELLCHECKER = False
-TINYMCE_COMPRESSOR = True
+
+FILEBROWSER_VERSIONS = {
+    'admin_thumbnail': {'verbose_name': 'Admin Thumbnail', 'width': 60, 'height': 60, 'opts': 'crop'},
+    'thumbnail': {'verbose_name': 'Thumbnail (1 col)', 'width': 60, 'height': 60, 'opts': 'crop'},
+    'small': {'verbose_name': 'Small (2 col)', 'width': 140, 'height': '', 'opts': ''},
+    'small_webp': {'verbose_name': 'Small (2 col)', 'width': 140, 'height': '', 'opts': '', 'webp': True},
+    'medium': {'verbose_name': 'Medium (4col )', 'width': 300, 'height': '', 'opts': '', 'webp': True},
+    'big': {'verbose_name': 'Big (6 col)', 'width': 460, 'height': '', 'opts': '', 'webp': True},
+    'large': {'verbose_name': 'Large (8 col)', 'width': 680, 'height': '', 'opts': '', 'webp': True},
+}

@@ -1,6 +1,6 @@
 from django.db import models
 from filebrowser.fields import FileBrowseField
-from tinymce import HTMLField
+from tinymce.models import HTMLField
 
 
 class BlogPost(models.Model):
