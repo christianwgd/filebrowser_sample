@@ -1,4 +1,4 @@
-Django==4.2.10
+Django==4.2.11
 django-filebrowser-no-grappelli==4.0.2
 django-tinymce==3.6.1
 Pillow==10.2.0
